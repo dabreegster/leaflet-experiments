@@ -16,3 +16,9 @@ Raster vs vector:
 - Dynamically generate lane markings or include them?
 - For raster, have to figure out how to render directly to a buffer without using screenshots. Need multiple zoom layers.
 - Could just export a GeomBatch to SVG or even pipe through some software rendering (like tiny-skia?)
+
+## Raster magic
+
+Use combine.sh (super slow)
+
+Then `convert full.gif -crop 256x256 -set filename:tile "%[fx:page.x/256+2048]_%[fx:page.y/256+2048]" +adjoin +repage 'tiled_%[filename:tile].gif'`

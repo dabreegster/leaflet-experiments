@@ -8,15 +8,13 @@
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 </head>
 <body>
-	<div id="mapid" style="width: 600px; height: 400px;"></div>
+	<div id="mapid" style="width: 1600px; height: 800px;"></div>
 	<script>
-		var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-		L.tileLayer('http://localhost:8000/atlas/{z}/{x}/{y}', {
+		var mymap = L.map('mapid').setView([0.0, 0.0], 12);
+		L.tileLayer('http://localhost:8000/montlake/tiled_{x}_{y}.gif', {
 			minZoom: 12,
 			maxZoom: 12,
-			attribution: 'TODO',
-			tileSize: 512,
-			zoomOffset: -1
+			attribution: 'TODO'
 		}).addTo(mymap);
 	</script>
 </body>
