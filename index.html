@@ -23,22 +23,20 @@
 		}
 
 		let xhr = new XMLHttpRequest();
-		xhr.open('GET', 'http://localhost:8000/montlake/montlake.json');
+		xhr.open('GET', 'http://localhost:8000/montlake/rendered_map.json');
 		//xhr.setRequestHeader('Content-Type', 'application/json');
 		xhr.responseType = 'json';
 		xhr.onload = function() {
 			if (xhr.status == 200) {
-				console.log("Got it, adding");
 				L.geoJSON(xhr.response, {
 					style: function(feature) {
-						console.log("sup " + feature.properties.type);
-						switch (feature.properties.type) {
-						    case 'road': return {color: "#ff0000"};
-						    case 'intersection':   return {color: "#0000ff"};
-						}
+						return {
+							fillColor: feature.properties.color,
+							fillOpacity: 1.0,
+							stroke: false
+						};
 					    }
 				}).addTo(mymap);
-				console.log("Done adding");
 			}
 		};
 		xhr.send();
