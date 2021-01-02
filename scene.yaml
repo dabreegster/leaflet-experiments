@@ -1,0 +1,23 @@
+cameras:
+    camera1:
+        type: flat
+
+sources:
+    montlake:
+        type: GeoJSON
+        #url: montlake/montlake.json
+        url: montlake/rendered_map.json
+        max_zoom: 16
+
+styles:
+        glass:
+                base: polygons
+                blend: overlay
+
+layers:
+    main:
+        data: { source: montlake }
+        draw:
+            polygons:
+                style: glass
+                color: function() { return feature.color; }
