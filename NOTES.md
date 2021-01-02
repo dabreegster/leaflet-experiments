@@ -22,3 +22,15 @@ Raster vs vector:
 Use combine.sh (super slow)
 
 Then `convert full.gif -crop 256x256 -set filename:tile "%[fx:page.x/256+2048]_%[fx:page.y/256+2048]" +adjoin +repage 'tiled_%[filename:tile].gif'`
+
+Or turn the geojson into rasters. Maybe https://github.com/protomaps/protomaps2d
+
+## Vector
+
+Tangram renders the giant .geojson reasonably. How can we make it smaller?
+
+- Make it read mbtile (1.1MB) on web?
+	- nope: https://github.com/tangrams/tangram/issues/628
+- Transform the geojson into MVT?
+
+tippecanoe -e mvt -z 20 -pC rendered_map.json

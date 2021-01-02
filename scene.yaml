@@ -4,10 +4,9 @@ cameras:
 
 sources:
     montlake:
-        type: GeoJSON
-        #url: montlake/montlake.json
-        url: montlake/rendered_map.json
-        max_zoom: 16
+        type: MVT
+        url: montlake/mvt/{z}/{x}/{y}.pbf
+        max_zoom: 20
 
 styles:
         glass:
@@ -15,7 +14,7 @@ styles:
                 blend: overlay
 
 layers:
-    main:
+    rendered_map:
         data: { source: montlake }
         draw:
             polygons:
