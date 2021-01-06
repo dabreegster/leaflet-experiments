@@ -10,12 +10,33 @@
 <body>
 	<div id="mapid" style="width: 1600px; height: 800px;"></div>
 	<script>
-		var mymap = L.map('mapid').setView([0.0, 0.0], 12);
-		L.tileLayer('http://localhost:8000/montlake/raster/tiled_{x}_{y}.gif', {
-			minZoom: 12,
+		var mymap = L.map('mapid', {
+			crs: L.CRS.Simple
+		}).setView([0.0, 0.0], 4);
+		L.tileLayer('http://localhost:8000/montlake/woohoo/{z}/{x}_{y}.png', {
+			minZoom: 0,
 			maxZoom: 12,
 			attribution: 'TODO'
 		}).addTo(mymap);
+
+		// Thanks https://gis.stackexchange.com/a/263817!
+		L.GridLayer.GridDebug = L.GridLayer.extend({
+		  createTile: function (coords) {
+		    const tile = document.createElement('div');
+		    tile.style.outline = '1px solid green';
+		    tile.style.fontWeight = 'bold';
+		    tile.style.fontSize = '14pt';
+		    tile.style.color = 'red';
+		    tile.innerHTML = [coords.z, coords.x, coords.y].join('/');
+		    return tile;
+		  },
+		});
+
+		L.gridLayer.gridDebug = function (opts) {
+		  return new L.GridLayer.GridDebug(opts);
+		};
+
+		mymap.addLayer(L.gridLayer.gridDebug());
 	</script>
 </body>
 </html>

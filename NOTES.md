@@ -25,6 +25,9 @@ Then `convert full.gif -crop 256x256 -set filename:tile "%[fx:page.x/256+2048]_%
 
 Or turn the geojson into rasters. Maybe https://github.com/protomaps/protomaps2d
 
+Or just do it manually, maybe with tiny-skia? https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
+https://github.com/dfyz/osm-renderer/blob/master/src/tile.rs
+
 ## Vector
 
 Tangram renders the giant .geojson reasonably. How can we make it smaller?
@@ -34,3 +37,11 @@ Tangram renders the giant .geojson reasonably. How can we make it smaller?
 - Transform the geojson into MVT?
 
 tippecanoe -e mvt -z 20 -pC rendered_map.json
+
+
+
+Try:
+- https://github.com/brandonxiang/leaflet-geojson-vt/tree/leaflet1.0.0/test
+- https://github.com/protomaps/cobble
+- https://flatgeobuf.org/ but no indexing?
+- https://github.com/maplibre/maplibre-gl-js
