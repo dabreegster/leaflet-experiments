@@ -54,8 +54,8 @@
 	function regenerate() {
 		var num_circles = document.getElementById('num_circles').value;
 		var num_segments = document.getElementById('num_segments').value;
-		var resp = make_clockboard();
-		window.alert(`Circles = ${num_circles}, segments = ${num_segments}, center = ${marker.getLatLng()}, resp = ${resp}`);
+		var rawJson = JSON.parse(make_clockboard(marker.getLatLng().lat, marker.getLatLng().lng, num_circles, num_segments));
+		L.geoJSON(rawJson).addTo(map);
 	}
 	// https://stackoverflow.com/questions/53630310/use-functions-defined-in-es6-module-directly-in-html
 	window.regenerate = regenerate;
