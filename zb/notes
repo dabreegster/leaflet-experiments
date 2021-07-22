@@ -1,0 +1,7 @@
+../run.py for the webserver
+
+over in the zb crate:
+wasm-pack build --target web -- --features wasm
+
+then back here:
+cp -Rv ~/zonebuilder-rust/pkg/ .
