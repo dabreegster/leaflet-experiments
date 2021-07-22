@@ -42,6 +42,11 @@
 	});
 	marker.addTo(map);
 
+	function recenter(e) {
+		marker.setLatLng(e.latlng);
+	}
+	map.on('click', recenter);
+
 	function regenerate() {
 		var num_circles = document.getElementById('num_circles').value;
 		var num_segments = document.getElementById('num_segments').value;
