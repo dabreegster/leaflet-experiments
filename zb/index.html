@@ -36,10 +36,16 @@
 		zoomOffset: -1
 	}).addTo(map);
 
+	var marker = L.marker([47.640342, -122.3191], {
+		draggable: true,
+		autoPan: true
+	});
+	marker.addTo(map);
+
 	function regenerate() {
 		var num_circles = document.getElementById('num_circles').value;
 		var num_segments = document.getElementById('num_segments').value;
-		window.alert(`Circles = ${num_circles}, segments = ${num_segments}`);
+		window.alert(`Circles = ${num_circles}, segments = ${num_segments}, center = ${marker.getLatLng()}`);
 	}
     </script>
   </body>
